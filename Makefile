@@ -3,7 +3,7 @@
 #
 
 #set default ENV based on your username and hostname
-GIT_BRANCH=$(shell git rev-parse --abbrev-ref HEAD)
+GIT_BRANCH=$(shell git rev-parse --abbrev-ref HEAD | sed -r 's/[\/]+/-/g')
 ENV ?= $(GIT_BRANCH)
 
 all: deploy test
