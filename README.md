@@ -101,3 +101,22 @@ Continous Deployment
 --------
 TO BE DONE
 
+
+CI/CD pipelines
+--------
+Currently CI/CD is integrated with GitHub Actions. However you can set it up
+quickly with any other CI/CD tool and see pipelines and actions similar to the
+ones below.
+
+**You can see CI/CD pipelines of project** [here](https://github.com/DamZiobro/serverless-aws-lambda-sqs-app/actions)
+
+Pipelines of GitHub Actions looks like on this picture:
+![](docs/pipelines.png)
+
+Pipeline steps are configured in [pipeline config file](.github/workflows/cicd.yml)
+
+Sample pipeline processing with details of each step can be found when you
+click on some of the pipelines in [Actions tab](https://github.com/DamZiobro/serverless-aws-lambda-sqs-app/actions).
+
+It should look like on t his picture:
+![](docs/pipeline-details.png)
