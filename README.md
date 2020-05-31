@@ -1,6 +1,9 @@
 Serverless AWS app using 'Lambda -> SQS chain' pattern
 ==================
 
+CI status:
+![](https://github.com/DamZiobro/serverless-aws-lambda-sqs-app/workflows/CI/CD/badge.svg)
+
 This is the skeleton of framework which allows to build and deploy serverless
 apps using chain of `AWS Lambda => SQS => AWS Lambda => ...` pattern. 
 
@@ -8,40 +11,37 @@ apps using chain of `AWS Lambda => SQS => AWS Lambda => ...` pattern.
 
 This framework is based on [a Serverless Application Framework](https://www.serverless.com/)
 
-Requirements
-----
-- [**Set up AWS credentials**](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) for your terminal
-- **Install Serverless Application Framework** via npm - [Instruction](https://www.serverless.com/framework/docs/getting-started#via-npm)
-
 Quick start
 ----
-1. **Deploy default app**
+1. [**Set up AWS credentials**](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) for your terminal
+2. **Install Serverless Application Framework** via npm - [Instruction](https://www.serverless.com/framework/docs/getting-started#via-npm)
+3. **Deploy default app**
 ```
 make deploy
 ```
-2. **Run app and get logs** (logs should contain: `Received message: test_message`)
+4. **Run app and get logs** (logs should contain: `Received message: test_message`)
 ```
 make run
 sleep 20 #wait 20 seconds until logs stream is created in AWS
 make logs
 ```
-3. **Do changes** in your lambda function **and redeploy** only lambda_function1 function:
+5. **Do changes** in your lambda function **and redeploy** only lambda_function1 function:
 ```
 sed -i 's/test_message/NEW_TEST_MESSAGE/g' app/lambda_function1.py
 make deploy FUNC=lambda_function2
 ```
-4. **Run app again and verify that logs** contains your changes (logs should contain: `Received message: NEW_TEST_MESSAGE`):
+6. **Run app again and verify that logs** contains your changes (logs should contain: `Received message: NEW_TEST_MESSAGE`):
 ```
 make run
 sleep 20 #wait 20 seconds until logs stream is created in AWS
 make logs
 ```
-5. **Destroy app** - delete all AWS resources of your app
+7. **Destroy app** - delete all AWS resources of your app
 ```
 make destroy
 ```
 
-Stages / Environments
+Stages
 ----
 You can work with app on specified stage (environment) ex. `dev`, `uat`, `prd` by passing ENV variable into the
 `make` commands ex.:
