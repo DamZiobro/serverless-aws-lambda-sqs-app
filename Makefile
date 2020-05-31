@@ -33,7 +33,7 @@ destroy:
 requirements:
 	pip install -r ${APP_DIR}/requirements.txt
 	pip install -r ${APP_DIR}/test-requirements.txt
-	touch $@
+	thttps://github.com/DamZiobro/serverless-aws-lambda-sqs-app/workflows/CI/CD/badge.svgouch $@
 
 #==========================================================================
 # Test and verify quality of the app
@@ -41,14 +41,17 @@ unittest: requirements
 	python -m unittest discover ${TEST_DIR}
 
 coverage: requirements
+	python -m coverage --version
 	python -m coverage run --source ${APP_DIR} --branch -m unittest discover -v 
 	python -m coverage report -m
 	python -m coverage html
 
 lint: requirements
+	python -m pylint --version
 	python -m pylint ${APP_DIR}
 
 security:
+	python -m bandit --version
 	python -m bandit ${APP_DIR}
 
 code-checks: lint security
