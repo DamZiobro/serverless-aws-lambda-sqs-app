@@ -66,6 +66,6 @@ separate AWS resources to avoid resources conflicts.
 
 After triggering the above command following resources will be created in your
 AWS account:
- - `damian-myapp-lambda_function2`
- - `damian-myapp-lambda_function1`
- - `damian-myapp-sqs-lambda_function1`
+ - AWS Lambda: `damian-myapp-lambda_function2`
+ - AWS Lambda: `damian-myapp-lambda_function1`
+ - AWS SQS queue: `damian-myapp-sqs-lambda_function1`
