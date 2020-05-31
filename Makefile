@@ -33,7 +33,7 @@ destroy:
 requirements:
 	pip install -r ${APP_DIR}/requirements.txt
 	pip install -r ${APP_DIR}/test-requirements.txt
-	thttps://github.com/DamZiobro/serverless-aws-lambda-sqs-app/workflows/CI/CD/badge.svgouch $@
+	touch $@
 
 #==========================================================================
 # Test and verify quality of the app
