@@ -120,3 +120,26 @@ click on some of the pipelines in [Actions tab](https://github.com/DamZiobro/ser
 
 It should look like on t his picture:
 ![](docs/pipeline-details.png)
+
+Creating and Merging Pull Requests
+--------
+
+To create Pull Request, go to [Pull Requests](https://github.com/DamZiobro/serverless-aws-lambda-sqs-app/pulls) and
+fo following steps: 
+1. Click 'New pull request'
+2. Select your branch and click on it.
+3. Make sure you selected your PR to be merged into `develop` (NOT `master`)
+   (we will use GitFlow for releases later)
+4. Click create Pull Request
+
+When you follow above actions, the CI/CD pipeline will be triggered automatically and perform all checkings described in CI/CD section above.
+
+When everything will be finished you should see results like here and if
+everything is green you can ask your colleague for Code Review. 
+
+If something is not green, you should fix it before asking Code Review.
+![](docs/pipeline-checkings.png)
+
+When you Code is reviewed you can click 'Merge pull request' and merge it into
+`develop` branch.
+
