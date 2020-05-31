@@ -4,9 +4,10 @@
 
 #set default ENV based on your username and hostname
 ENV ?= $(USER)
+APP_DIR=app
+TEST_DIR=tests
 
 all: deploy test
-
 
 deploy:
 	@echo "======> Deploying to env $(ENV) <======"
@@ -29,8 +30,29 @@ destroy:
 	@echo "======> DELETING in env $(ENV) <======"
 	sls remove --stage $(ENV)
 
-#test:
-	#@echo "======> Testing in env $(ENV) <======"
-	#sls invoke 
+requirements:
+	pip install -r ${APP_DIR}/requirements.txt
+	pip install -r ${APP_DIR}/test-requirements.txt
+	touch $@
 
-.PHONY: test deploy destroy
+#==========================================================================
+# Test and verify quality of the app
+unittest: requirements
+	python -m unittest discover ${TEST_DIR}
+
+coverage: requirements
+	python -m coverage run --source ${APP_DIR} --branch -m unittest discover -v 
+	python -m coverage report -m
+	python -m coverage html
+
+lint: requirements
+	python -m pylint ${APP_DIR}
+
+security:
+	python -m bandit ${APP_DIR}
+
+code-checks: lint security
+
+ci: code-checks unittest coverage
+
+.PHONY: test deploy destroy unittest coverage lint security

@@ -69,3 +69,32 @@ AWS account:
  - AWS Lambda: `damian-myapp-lambda_function2`
  - AWS Lambda: `damian-myapp-lambda_function1`
  - AWS SQS queue: `damian-myapp-sqs-lambda_function1`
+
+Tests
+----
+We have following level of tests in the application:
+- `make code-checks` - checks code syntax using `pylint` and security using `bandit` 
+- `make unittest coverage` - trigger all unit tests of the code and show code coverage
+- `make e2e-tests` (NOT IMPLEMETED YET) - selenium-based tests runned after deployment
+- `make load-tests` (NOT IMPLEMENTED YET) 
+
+CI/CD
+----
+The CI/CD is based on Makefile targets and is integrated with GitHub Actions to
+trigger (however it could be easly integrated with any other CI/CD tool ex. 
+Jenkins, BitBucket pipelines, GitLab, TravisCI, Bamboo or any other)
+
+It consists of following steps:
+
+Continous Integration
+--------
+You can run all the below steps/commands using one `make ci` command
+- `make lint` => check code syntax using `pylint` tool
+- `make security` => check code security breaches using `bandit` tool
+- `make unittest` => trigger unit tests and show report
+- `make coverage` => show unit tests code coverage
+
+Continous Deployment
+--------
+TO BE DONE
+
