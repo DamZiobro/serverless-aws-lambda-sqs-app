@@ -2,7 +2,7 @@ Serverless AWS app using 'Lambda -> SQS chain' pattern
 ==================
 
 CI status:
-![](https://github.com/DamZiobro/serverless-aws-lambda-sqs-app/workflows/CI/CD/badge.svg)
+![](https://github.com/DamZiobro/serverless-aws-lambda-sqs-app/workflows/CI/badge.svg)
 
 This is the skeleton of framework which allows to build and deploy serverless
 apps using chain of `AWS Lambda => SQS => AWS Lambda => ...` pattern. 
