@@ -1,8 +1,10 @@
-Serverless app skeleton based on AWS Lambda+SQS chain pattern
+Serverless AWS app based on Lambda -> SQS chain pattern
 ==================
 
 This is the skeleton of framework which allows to build and deploy serverless
 apps based on `AWS Lambda => SQS => AWS Lambda => ...` pattern. 
+
+![](https://epsagon.com/wp-content/uploads/2018/11/ezgif-2-e456cb3ebd60.jpg)
 
 This framework is based on [a Serverless Application Framework](https://www.serverless.com/)
 
@@ -25,7 +27,6 @@ make logs
 sed -i 's/test_message/NEW_TEST_MESSAGE/g' app/lambda_function1.py
 make deploy FUNC=lambda_function2
 ```
-
 6. Run app again and verify that logs contains your changes (logs should contain: `Received message: NEW_TEST_MESSAGE`):
 ```
 make run
