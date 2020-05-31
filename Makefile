@@ -36,8 +36,6 @@ security:
 
 code-checks: lint security
 
-ci: code-checks unittest coverage
-
 deploy:
 	@echo "======> Deploying to env $(ENV) <======"
 ifeq ($(FUNC),)
@@ -65,5 +63,8 @@ e2e-tests: run-and-logs
 destroy:
 	@echo "======> DELETING in env $(ENV) <======"
 	sls remove --stage $(ENV)
+
+ci: code-checks unittest coverage
+cd: ci deploy e2e-tests 
 
 .PHONY: e2e-test deploy destroy unittest coverage lint security code-checks run logs destroy requirements

@@ -99,7 +99,11 @@ You can run all the below steps/commands using one `make ci` command
 
 Continous Deployment
 --------
-TO BE DONE
+You can run all the below steps/commands using one `make cd` command:
+- `make deploy` => deploys app to AWS
+- `make e2e-tests` => run End to End tests on deployed app
+- `make destroy` => (optional: works only on feature branches) destroy AWS
+  resources after finishing e2e-tests
 
 
 CI/CD pipelines
@@ -107,6 +111,10 @@ CI/CD pipelines
 Currently CI/CD is integrated with GitHub Actions. However you can set it up
 quickly with any other CI/CD tool and see pipelines and actions similar to the
 ones below.
+
+To run CI/CD pipelines you need to export `AWS_KEY` and `AWS_SECRET` to the
+`Secrets` section of your GitHub project:
+![](docs/pipelines-secrets-setup.png)
 
 **You can see CI/CD pipelines of project** [here](https://github.com/DamZiobro/serverless-aws-lambda-sqs-app/actions)
 
@@ -118,7 +126,7 @@ Pipeline steps are configured in [pipeline config file](.github/workflows/cicd.y
 Sample pipeline processing with details of each step can be found when you
 click on some of the pipelines in [Actions tab](https://github.com/DamZiobro/serverless-aws-lambda-sqs-app/actions).
 
-It should look like on t his picture:
+It should look like on this picture:
 ![](docs/pipeline-details.png)
 
 Creating and Merging Pull Requests
