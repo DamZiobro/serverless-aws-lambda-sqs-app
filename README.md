@@ -46,9 +46,9 @@ Stages
 You can work with app on specified stage (environment) ex. `dev`, `uat`, `prd` by passing ENV variable into the
 `make` commands ex.:
 ```
-ENV=dev make deploy 
-ENV=uat make deploy 
-ENV=prd make deploy 
+make deploy ENV=dev
+make deploy ENV=uat
+make deploy ENV=prd 
 ```
 or export `ENV` variable in your terminal and use default commands ex.
 ```
@@ -72,6 +72,15 @@ AWS account:
  - AWS Lambda: `myapp-master-lambda_function2`
  - AWS Lambda: `myapp-master-lambda_function1`
  - AWS SQS queue: `myapp-master-sqs-lambda_function1`
+
+
+The resources for different stages will be deployed with different names to be
+possible to test different versions of app separately. 
+For example, if you trigger `make deploy ENV=dev` following resources will be
+deployed:
+ - `myapp-dev-lambda_function1`
+ - `myapp-dev-lambda_function2`
+ - `myapp-dev-sqs-lambda_function1`
 
 Tests
 ----
@@ -150,4 +159,3 @@ If something is not green, you should fix it before asking Code Review.
 
 When you Code is reviewed you can click 'Merge pull request' and merge it into
 `develop` branch.
-
