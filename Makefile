@@ -14,7 +14,6 @@ requirements:
 	pip install -r ${APP_DIR}/requirements.txt
 	pip install -r ${APP_DIR}/test-requirements.txt
 	#install serverless framework for CD
-	pip install npm
 	npm install -g serverless
 	touch $@
 

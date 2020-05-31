@@ -23,6 +23,11 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.7
+    
+    - name: Install NodeJS for serverless framework
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
 
     - name: Installing requirements
       run: make requirements
