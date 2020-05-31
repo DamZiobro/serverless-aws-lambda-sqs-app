@@ -16,7 +16,7 @@ def lambda_handler(event, context):
     sqs = boto3.client('sqs')
     sqs_result = sqs.send_message(
         QueueUrl=os.getenv('SQS_URL'),
-        MessageBody='test_message'
+        MessageBody='NEW_MESSAGE'
     )
     print(sqs_result)
     return sqs_result
