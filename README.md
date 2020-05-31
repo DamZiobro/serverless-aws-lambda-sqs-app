@@ -1,8 +1,8 @@
-Serverless AWS app based on Lambda -> SQS chain pattern
+Serverless AWS app using 'Lambda -> SQS chain' pattern
 ==================
 
 This is the skeleton of framework which allows to build and deploy serverless
-apps based on `AWS Lambda => SQS => AWS Lambda => ...` pattern. 
+apps using chain of `AWS Lambda => SQS => AWS Lambda => ...` pattern. 
 
 ![](https://epsagon.com/wp-content/uploads/2018/11/ezgif-2-e456cb3ebd60.jpg)
 
