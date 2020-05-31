@@ -21,6 +21,6 @@ def lambda_handler(event, context):
     """
     print(sqs.send_message(
         QueueUrl=os.getenv('SQS_URL'),
-        MessageBody='NEW_TEST_MESSAGE'
+        MessageBody='test_message'
     ))
     return ''

@@ -29,8 +29,8 @@ destroy:
 	@echo "======> DELETING in env $(ENV) <======"
 	sls remove --stage $(ENV)
 
-test:
-	@echo "======> Testing in env $(ENV) <======"
-	sls invoke 
+#test:
+	#@echo "======> Testing in env $(ENV) <======"
+	#sls invoke 
 
 .PHONY: test deploy destroy
