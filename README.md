@@ -56,22 +56,22 @@ export ENV=dev
 make deploy run
 ```
 
-The default stage for the app is equal to the `USER` env var on your linux machine. 
-For me it is `damian`
+**The default stage for the app is equal to current branch name ex. master**. 
 
 Building and deploying AWS resources
 ----
 `make deploy` will build and deploy infrastructure and code as defined in [serverless.yml](serverless.yml) file:
 
-By default resources are deployed to the default [stage](https://serverless-stack.com/chapters/stages-in-serverless-framework.html) (environment) based on your linux
-username ex. for me it is `damian`. Thanks to that multiple users can deploy to
+By default resources are deployed to the default
+[stage](https://serverless-stack.com/chapters/stages-in-serverless-framework.html)
+(environment) based on current branch name ex. `master`. Thanks to that multiple users working on separate branches can deploy to
 separate AWS resources to avoid resources conflicts.
 
-After triggering the above command following resources will be created in your
+After triggering the above command on `master` branch following resources will be created in your
 AWS account:
- - AWS Lambda: `damian-myapp-lambda_function2`
- - AWS Lambda: `damian-myapp-lambda_function1`
- - AWS SQS queue: `damian-myapp-sqs-lambda_function1`
+ - AWS Lambda: `myapp-master-lambda_function2`
+ - AWS Lambda: `myapp-master-lambda_function1`
+ - AWS SQS queue: `myapp-master-sqs-lambda_function1`
 
 Tests
 ----
