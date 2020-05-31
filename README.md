@@ -10,8 +10,8 @@ This framework is based on [a Serverless Application Framework](https://www.serv
 
 Quick start
 ----
-1. [a **Set up AWS credentials**](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) for your terminal
-2. **Install Serverless Application Framework** via npm - [a Instruction](https://www.serverless.com/framework/docs/getting-started#via-npm)
+1. [**Set up AWS credentials**](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) for your terminal
+2. **Install Serverless Application Framework** via npm - [Instruction](https://www.serverless.com/framework/docs/getting-started#via-npm)
 3. **Deploy default app**
 ```
 make deploy
@@ -58,9 +58,9 @@ For me it is `damian`
 
 Building and deploying AWS resources
 ----
-`make deploy` will build and deploy infrastructure and code as defined in [a serverless.yml](serverless.yml) file:
+`make deploy` will build and deploy infrastructure and code as defined in [serverless.yml](serverless.yml) file:
 
-By default resources are deployed to the default [a stage](https://serverless-stack.com/chapters/stages-in-serverless-framework.html) based on your linux
+By default resources are deployed to the default [stage](https://serverless-stack.com/chapters/stages-in-serverless-framework.html) (environment) based on your linux
 username ex. for me it is `damian`. Thanks to that multiple users can deploy to
 separate AWS resources to avoid resources conflicts.
 
