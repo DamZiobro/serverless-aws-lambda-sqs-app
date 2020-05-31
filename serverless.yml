@@ -15,7 +15,7 @@ provider:
 
 custom:
   env: ${opt:stage, self:provider.stage}
-  resource_prefix: ${self:custom.env}-${self:service}
+  resource_prefix: ${self:service}-${self:custom.env}
   queue-name-lambda_function1: ${self:custom.resource_prefix}-lambda_function1
 
 functions:

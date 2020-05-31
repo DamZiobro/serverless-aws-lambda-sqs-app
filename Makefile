@@ -3,7 +3,8 @@
 #
 
 #set default ENV based on your username and hostname
-ENV ?= $(USER)
+GIT_BRANCH=$(shell git rev-parse --abbrev-ref HEAD)
+ENV ?= $(GIT_BRANCH)
 
 all: deploy test
 
