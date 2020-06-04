@@ -57,4 +57,5 @@ jobs:
       run: make load-tests
 
     - name: Destroy
+      if: branch != develop
       run: make destroy
