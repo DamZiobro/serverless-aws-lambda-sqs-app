@@ -60,11 +60,14 @@ run-and-logs: run sleep logs
 
 e2e-tests: run-and-logs
 
+load-tests:
+	@echo -e "load-tests not implemented yet"
+
 destroy:
 	@echo "======> DELETING in env $(ENV) <======"
 	sls remove --stage $(ENV)
 
 ci: code-checks unittest coverage
-cd: ci deploy e2e-tests 
+cd: ci deploy e2e-tests load-tests
 
 .PHONY: e2e-test deploy destroy unittest coverage lint security code-checks run logs destroy requirements
