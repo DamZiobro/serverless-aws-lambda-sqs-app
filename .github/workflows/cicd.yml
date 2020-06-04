@@ -57,5 +57,5 @@ jobs:
       run: make load-tests
 
     - name: Destroy
-      if: github.head_ref != develop
+      if: github.head_ref != 'develop'
       run: make destroy
