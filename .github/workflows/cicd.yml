@@ -56,13 +56,13 @@ jobs:
       run: make deploy
 
     - name: End to End Tests
-      if: !startsWith( github.ref, "prd-v")
+      if: startsWith( github.ref, "prd-v")
       run: make e2e-tests
 
     - name: Load tests
-      if: !startsWith( github.ref, "prd-v")
+      if: startsWith( github.ref, "prd-v")
       run: make load-tests
 
     - name: Destroy
-      if: !startsWith( github.ref, "prd-v")
+      if: startsWith( github.ref, "prd-v")
       run: make destroy
