@@ -67,7 +67,7 @@ load-tests:
 
 destroy:
 	@echo "======> DELETING in env $(ENV) <======"
-	sls remove --stage $(ENV) --revion $(AWS_DEFAULT_REGION)
+	sls remove --stage $(ENV) --region $(AWS_DEFAULT_REGION)
 
 ci: code-checks unittest coverage
 cd: ci deploy e2e-tests load-tests
