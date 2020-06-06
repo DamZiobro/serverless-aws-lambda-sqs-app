@@ -52,15 +52,15 @@ jobs:
 
     - name: End to End Tests
       #don't run e2e-tests on PROD
-      if: !startsWith(github.head_ref, "prd-v*")
+      if: startsWith(github.head_ref, "prd-v*") == false
       run: make e2e-tests
 
     - name: Load tests
       #don't run load tests on PROD
-      if: !startsWith(github.head_ref, "prd-v*")
+      if: startsWith(github.head_ref, "prd-v*") == false
       run: make load-tests
 
     - name: Destroy
       #don't destroy AWS resources on PROD, SIT and DEV
-      if: github.head_ref != 'develop' and !startsWith(github.head_ref, "prd-v*") and !startsWith(github.head_ref, "sit-v*")
+      if: github.head_ref != 'develop' and startsWith(github.head_ref, "prd-v*") == false and startsWith(github.head_ref, "sit-v*") == false
       run: make destroy
