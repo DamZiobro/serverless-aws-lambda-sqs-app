@@ -70,4 +70,4 @@ destroy:
 ci: code-checks unittest coverage
 cd: ci deploy e2e-tests load-tests
 
-.PHONY: e2e-test deploy destroy unittest coverage lint security code-checks run logs destroy requirements
+.PHONY: e2e-test deploy destroy unittest coverage lint security code-checks run logs destroy
