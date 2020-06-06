@@ -51,11 +51,16 @@ jobs:
       run: make deploy
 
     - name: End to End Tests
+      #don't run e2e-tests on PROD
+      if: github.head_ref != "prd-v*"
       run: make e2e-tests
 
     - name: Load tests
+      #don't run load tests on PROD
+      if: github.head_ref != "prd-v*"
       run: make load-tests
 
     - name: Destroy
-      if: github.head_ref != 'develop'
+      #don't destroy AWS resources on PROD, SIT and DEV
+      if: github.head_ref != 'develop' and github.head_ref != "prd-v*" and github.head_ref != "sit-v*"
       run: make destroy
