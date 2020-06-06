@@ -5,8 +5,10 @@
 #set default ENV based on your username and hostname
 APP_DIR=app
 TEST_DIR=tests
-GIT_BRANCH=$(shell git rev-parse --abbrev-ref HEAD | sed -r 's/[\/]+/-/g')
+#get name of GIT branchse => remove 'feature/' if exists and limit to max 20 characters
+GIT_BRANCH=$(shell git rev-parse --abbrev-ref HEAD | sed -r 's/[\/]+/-/g' | sed -r 's/feature-//g' | cut -c 1-20)
 ENV ?= $(GIT_BRANCH)
+AWS_DEFAULT_REGION ?= eu-west-1
 
 #==========================================================================
 # Test and verify quality of the app
@@ -39,9 +41,9 @@ code-checks: lint security
 deploy:
 	@echo "======> Deploying to env $(ENV) <======"
 ifeq ($(FUNC),)
-	sls deploy --stage $(ENV)
+	sls deploy --stage $(ENV) --verbose --region $(AWS_DEFAULT_REGION)
 else
-	sls deploy --stage $(ENV) -f $(FUNC) 
+	sls deploy --stage $(ENV) -f $(FUNC) --verbose --region $(AWS_DEFAULT_REGION)
 endif
 
 run:
@@ -65,7 +67,7 @@ load-tests:
 
 destroy:
 	@echo "======> DELETING in env $(ENV) <======"
-	sls remove --stage $(ENV)
+	sls remove --stage $(ENV) --revion $(AWS_DEFAULT_REGION)
 
 ci: code-checks unittest coverage
 cd: ci deploy e2e-tests load-tests
