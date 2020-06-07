@@ -15,7 +15,7 @@ AWS_DEFAULT_REGION ?= eu-west-1
 serverless:
 	#install serverless framework for Continous Deployment
 	npm install -g serverless@1.51.0 || true
-	npm install -g serverless-python-requirements@5.1.0
+	sls plugin install -n serverless-python-requirements
 	touch $@
 
 
