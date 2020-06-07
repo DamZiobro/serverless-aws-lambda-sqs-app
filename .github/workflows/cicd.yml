@@ -64,5 +64,5 @@ jobs:
       run: make load-tests
 
     - name: Destroy
-      if: startsWith( github.ref, "sit-v") == false && github.ref != 'develop'
+      if: startsWith( github.ref, 'sit-v') == false && github.ref != 'develop'
       run: make destroy
