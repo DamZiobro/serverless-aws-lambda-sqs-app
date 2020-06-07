@@ -1,0 +1,4 @@
+coverage==5.1
+bandit==1.6.2
+pylint==2.5.2
+wheel
