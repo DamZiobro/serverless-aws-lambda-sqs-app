@@ -12,7 +12,7 @@ This simple project is demonstration of multiple modern technologies/methodologi
   * **Microservices** architecture (single resposiblity AWS Lambdas communicating via AWS SQS)
   * **Infrastracture as a Code** (IaaC) (Serverless framework - YML config)
   * **DevOps**-based workflow (Makefile spanning Developers and Operations Teams)
-  * **CI/CD** pipeline
+  * Fully automated **CI/CD pipeline** based on GitHub Actions CI/CD Server
     * code syntax verification (pylint) (`make lint`)
     * security verification (bandit) (`make security`)
     * unit tests (unittest) (`make unittest`)
