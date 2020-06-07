@@ -1,5 +1,8 @@
 service: myapp
 
+plugins:
+    - serverless-python-requirements
+
 provider:
   name: aws
   runtime: python3.7
@@ -13,10 +16,16 @@ provider:
       Resource:
         Fn::GetAtt: [ queuelambdafunction1, Arn ]
 
+package:
+    exclude:
+        - node_modules/**
+
 custom:
   env: ${opt:stage, self:provider.stage}
   resource_prefix: ${self:service}-${self:custom.env}
   queue-name-lambda_function1: ${self:custom.resource_prefix}-lambda_function1
+  pythonRequirements:
+      dockerizePip: non-linux
 
 functions:
 

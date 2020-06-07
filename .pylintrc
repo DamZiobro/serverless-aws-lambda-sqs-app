@@ -25,7 +25,7 @@ init-hook='import sys; sys.path.append(".")'
 ; R0915 Too many statements
 ; R0913 Too many arguments
 ; R0923: Interface not implemented
-disable=I0011,I0012,C0111,W0142,R,C0111,W0613
+disable=I0011,I0012,C0111,W0142,R,C0111,W0613,W1203,W0511
 
 #allow Flask app name
 good-names = app,k,v,p,i,db,f,e,exc,c
