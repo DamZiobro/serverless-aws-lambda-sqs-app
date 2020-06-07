@@ -1,8 +1,30 @@
-Serverless AWS app using 'Lambda -> SQS chain' pattern
+Serverless Microservices-based AWS app with CI/CD pipeline
 ==================
 
 CI/CD status:
 ![](https://github.com/DamZiobro/serverless-aws-lambda-sqs-app/workflows/CI/badge.svg)
+
+This simple project is demonstration of multiple modern technologies/methodologies/principles:
+
+  * **Python** programming language
+  * cloud-based app deployed to **Amazon Web Services (AWS)**
+  * **Serverless** (Serverless Framework)
+  * **Microservices** architecture (single resposiblity AWS Lambdas communicating via AWS SQS)
+  * **Infrastracture as a Code** (IaaC) (Serverless framework - YML config)
+  * **DevOps**-based workflow (Makefile spanning Developers and Operations Teams)
+  * **CI/CD** pipeline
+    * code syntax verification (pylint) (`make lint`)
+    * security verification (bandit) (`make security`)
+    * unit tests (unittest) (`make unittest`)
+    * code coverage (coverage python module)  (`make coverage`)
+    * deploy infrastructure (AWS, Serverless framework)  (`make deploy`)
+    * End-To-End tests (cucumber, pytest-bdd, selenium) (NOT IMPLEMENTED YET) (`make e2e-tests`)
+    * load/performance tests tests (gatling, locust) (NOT IMPLEMENTED YET) (`make load-tests`)
+    * destroy infrastructure (AWS, Serverless framework)  (`make destroy`)
+  * **deploying from Command Line or from CI/CD** 
+    * single Makefile to control all deploying and code checkings commands
+    * available to **deploy to multiple stages /environments (ex. DEV, SIT, PROD)** using the same command (ex. `make deploy ENV=SIT`)
+    * available to deploy single lambda function (ex. `make deploy FUNC=lambdaFunctionName`)
 
 This is the skeleton of framework which allows to build and deploy serverless
 apps using chain of `AWS Lambda => SQS => AWS Lambda => ...` pattern. 
