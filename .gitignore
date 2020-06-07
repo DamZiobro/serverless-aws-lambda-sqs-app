@@ -2,6 +2,7 @@ requirements
 .serverless
 node_modules/*
 package-lock.json
+serverless
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

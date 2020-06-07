@@ -14,7 +14,7 @@ This framework is based on [a Serverless Application Framework](https://www.serv
 Quick start
 ----
 1. [**Set up AWS credentials**](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) for your terminal
-2. **Install Serverless Application Framework** via npm - [Instruction](https://www.serverless.com/framework/docs/getting-started#via-npm)
+2. **Install Serverless Application Framework** via npm - [Instruction](https://www.serverless.com/framework/docs/getting-started#via-npm). You can use `make serverless` command from root of this project (or `sudo make serverless` if you see `EACCES: permission denied`).
 3. **Deploy default app**
 ```
 make deploy

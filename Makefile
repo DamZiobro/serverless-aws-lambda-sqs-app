@@ -12,12 +12,16 @@ AWS_DEFAULT_REGION ?= eu-west-1
 
 #==========================================================================
 # Test and verify quality of the app
-requirements:
+serverless:
+	#install serverless framework for Continous Deployment
+	npm install -g serverless-python-requirements@5.1.0
+	npm install -g serverless@1.51.0 || true
+	touch $@
+
+
+requirements: serverless
 	pip install -r requirements.txt
 	pip install -r tests/test-requirements.txt
-	#install serverless framework for CD
-	npm install serverless@1.51.0
-	npm install serverless-python-requirements
 	touch $@
 
 unittest: requirements
