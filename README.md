@@ -1,8 +1,30 @@
-Serverless AWS app using 'Lambda -> SQS chain' pattern
+Serverless Microservices-based AWS app with CI/CD pipeline
 ==================
 
-CI status:
+**CI/CD status**:
 ![](https://github.com/DamZiobro/serverless-aws-lambda-sqs-app/workflows/CI/badge.svg)
+
+This simple project is demonstration of multiple modern technologies/methodologies/principles:
+
+  * **Python** programming language
+  * cloud-based app deployed to **Amazon Web Services (AWS)**
+  * **Serverless** (Serverless Framework)
+  * **Microservices** architecture (single resposiblity AWS Lambdas communicating via AWS SQS)
+  * **Infrastracture as a Code** (IaaC) (Serverless framework - YML config)
+  * **DevOps**-based workflow (Makefile spanning Developers and Operations Teams)
+  * **CI/CD** pipeline
+    * code syntax verification (pylint) (`make lint`)
+    * security verification (bandit) (`make security`)
+    * unit tests (unittest) (`make unittest`)
+    * code coverage (coverage python module)  (`make coverage`)
+    * deploy infrastructure (AWS, Serverless framework)  (`make deploy`)
+    * End-To-End tests (cucumber, pytest-bdd, selenium) (NOT IMPLEMENTED YET) (`make e2e-tests`)
+    * load/performance tests (gatling, locust) (NOT IMPLEMENTED YET) (`make load-tests`)
+    * destroy infrastructure (AWS, Serverless framework)  (`make destroy`)
+  * **deploying from Command Line or from CI/CD** 
+    * single Makefile to control all deploying and code checkings commands
+    * available to **deploy to multiple stages /environments (ex. DEV, SIT, PROD)** using the same command (ex. `make deploy ENV=SIT`)
+    * available to deploy single lambda function (ex. `make deploy FUNC=lambdaFunctionName`)
 
 This is the skeleton of framework which allows to build and deploy serverless
 apps using chain of `AWS Lambda => SQS => AWS Lambda => ...` pattern. 
@@ -14,7 +36,7 @@ This framework is based on [a Serverless Application Framework](https://www.serv
 Quick start
 ----
 1. [**Set up AWS credentials**](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) for your terminal
-2. **Install Serverless Application Framework** via npm - [Instruction](https://www.serverless.com/framework/docs/getting-started#via-npm)
+2. **Install Serverless Application Framework** via npm - [Instruction](https://www.serverless.com/framework/docs/getting-started#via-npm). You can use `make serverless` command from root directory of this project (or `sudo make serverless` if you see `EACCES: permission denied`).
 3. **Deploy default app**
 ```
 make deploy
@@ -108,7 +130,11 @@ You can run all the below steps/commands using one `make ci` command
 
 Continous Deployment
 --------
-TO BE DONE
+You can run all the below steps/commands using one `make cd` command:
+- `make deploy` => deploys app to AWS
+- `make e2e-tests` => run End to End tests on deployed app
+- `make destroy` => (optional: works only on feature branches) destroy AWS
+  resources after finishing e2e-tests
 
 
 CI/CD pipelines
@@ -116,6 +142,10 @@ CI/CD pipelines
 Currently CI/CD is integrated with GitHub Actions. However you can set it up
 quickly with any other CI/CD tool and see pipelines and actions similar to the
 ones below.
+
+To run CI/CD pipelines you need to export `AWS_KEY` and `AWS_SECRET` to the
+`Secrets` section of your GitHub project:
+![](docs/pipelines-secrets-setup.png)
 
 **You can see CI/CD pipelines of project** [here](https://github.com/DamZiobro/serverless-aws-lambda-sqs-app/actions)
 
@@ -127,7 +157,7 @@ Pipeline steps are configured in [pipeline config file](.github/workflows/cicd.y
 Sample pipeline processing with details of each step can be found when you
 click on some of the pipelines in [Actions tab](https://github.com/DamZiobro/serverless-aws-lambda-sqs-app/actions).
 
-It should look like on t his picture:
+It should look like on this picture:
 ![](docs/pipeline-details.png)
 
 Creating and Merging Pull Requests
