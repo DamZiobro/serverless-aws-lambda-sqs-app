@@ -8,6 +8,7 @@ on:
   push:
     branches: 
         - develop
+        - 'release/*'
     tags: 
         - prd-v*
   pull_request:
