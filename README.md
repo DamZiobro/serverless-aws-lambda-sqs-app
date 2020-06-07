@@ -1,7 +1,7 @@
 Serverless Microservices-based AWS app with CI/CD pipeline
 ==================
 
-CI/CD status:
+**CI/CD status**:
 ![](https://github.com/DamZiobro/serverless-aws-lambda-sqs-app/workflows/CI/badge.svg)
 
 This simple project is demonstration of multiple modern technologies/methodologies/principles:
@@ -19,7 +19,7 @@ This simple project is demonstration of multiple modern technologies/methodologi
     * code coverage (coverage python module)  (`make coverage`)
     * deploy infrastructure (AWS, Serverless framework)  (`make deploy`)
     * End-To-End tests (cucumber, pytest-bdd, selenium) (NOT IMPLEMENTED YET) (`make e2e-tests`)
-    * load/performance tests tests (gatling, locust) (NOT IMPLEMENTED YET) (`make load-tests`)
+    * load/performance tests (gatling, locust) (NOT IMPLEMENTED YET) (`make load-tests`)
     * destroy infrastructure (AWS, Serverless framework)  (`make destroy`)
   * **deploying from Command Line or from CI/CD** 
     * single Makefile to control all deploying and code checkings commands
@@ -36,7 +36,7 @@ This framework is based on [a Serverless Application Framework](https://www.serv
 Quick start
 ----
 1. [**Set up AWS credentials**](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) for your terminal
-2. **Install Serverless Application Framework** via npm - [Instruction](https://www.serverless.com/framework/docs/getting-started#via-npm). You can use `make serverless` command from root of this project (or `sudo make serverless` if you see `EACCES: permission denied`).
+2. **Install Serverless Application Framework** via npm - [Instruction](https://www.serverless.com/framework/docs/getting-started#via-npm). You can use `make serverless` command from root directory of this project (or `sudo make serverless` if you see `EACCES: permission denied`).
 3. **Deploy default app**
 ```
 make deploy
