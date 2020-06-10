@@ -11,5 +11,5 @@ def lambda_handler(event, context):
     :return: ''
     """
     message = event.get('Records')[0].get('body')
-    print(f"Received message: {message}")
+    print(f"Received NEW message: {message}")
     return message
