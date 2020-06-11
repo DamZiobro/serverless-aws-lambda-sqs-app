@@ -1,4 +1,4 @@
-Serverless Microservices-based AWS app with CI/CD pipeline
+Serverless, DevOps, Microservices and AWS-based app with CI/CD pipeline
 ==================
 
 **CI/CD status**:
