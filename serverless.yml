@@ -1,8 +1,8 @@
 service: myapp
 
 plugins:
-    - serverless-python-requirements
-
+  - serverless-python-requirements
+  - serverless-plugin-cloudwatch-dashboard
 provider:
   name: aws
   runtime: python3.7
@@ -32,9 +32,13 @@ functions:
 
   lambda_function1:
     handler: app/lambda_function1.lambda_handler
+    events:
+      - eventBridge:
+          schedule: rate(10 minutes)
     environment:
       SQS_URL:
         Ref: queuelambdafunction1
+    dashboard: true
 
 
   lambda_function2:
@@ -43,6 +47,7 @@ functions:
       - sqs:
           arn:
             Fn::GetAtt: [ queuelambdafunction1, Arn ]
+    dashboard: true
 
 resources:
   Resources:

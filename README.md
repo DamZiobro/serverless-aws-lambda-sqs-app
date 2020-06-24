@@ -25,6 +25,8 @@ This simple project is demonstration of multiple modern technologies/methodologi
     * single Makefile to control all deploying and code checkings commands
     * available to **deploy to multiple stages /environments (ex. DEV, SIT, PROD)** using the same command (ex. `make deploy ENV=SIT`)
     * available to deploy single lambda function (ex. `make deploy FUNC=lambdaFunctionName`)
+  * **Monitoring**
+    * basic monitoring based on **CloudWatch Dashboards**
 
 This is the skeleton of framework which allows to build and deploy serverless
 apps using chain of `AWS Lambda => SQS => AWS Lambda => ...` pattern. 
@@ -181,3 +183,12 @@ If something is not green, you should fix it before asking Code Review.
 
 When you Code is reviewed you can click 'Merge pull request' and merge it into
 `develop` branch.
+
+Monitoring
+--------
+This application has integrated basic monitoring based on **CloudWatch Dashboards**. 
+It is based on [serverless-plugin-cloudwatch-dashboard](https://www.serverless.com/plugins/serverless-plugin-cloudwatch-dashboard/) Serverless framework plugin.
+
+Deployment of [serverless.yml](serverless.yml) creates 4 CloudWatch Dashboardss for AWS
+Lambda monitoring as on the picture:
+![](docs/dashboards.png)

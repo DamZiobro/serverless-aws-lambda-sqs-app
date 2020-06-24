@@ -1,0 +1,4 @@
+- add tracing (AWS X-Ray) layer
+- implement e2e-tests
+- implement load-tests
+- add AWS Step Functions
