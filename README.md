@@ -1,4 +1,4 @@
-Serverless Microservices-based AWS app with CI/CD pipeline
+Serverless, DevOps, Microservices and AWS-based app with CI/CD pipeline
 ==================
 
 **CI/CD status**:
@@ -8,11 +8,11 @@ This simple project is demonstration of multiple modern technologies/methodologi
 
   * **Python** programming language
   * cloud-based app deployed to **Amazon Web Services (AWS)**
-  * **Serverless** (Serverless Framework)
+  * **Serverless** (Serverless Framework) - AWS Lambda, SQS
   * **Microservices** architecture (single resposiblity AWS Lambdas communicating via AWS SQS)
-  * **Infrastracture as a Code** (IaaC) (Serverless framework - YML config)
-  * **DevOps**-based workflow (Makefile spanning Developers and Operations Teams)
-  * **CI/CD** pipeline
+  * **Infrastracture as a Code** (IaaC) (Serverless framework - [serverless.yml](serverless.yml) defines infrastructure resources)
+  * **DevOps**-based workflow (common code base with Makefile commands spanning Developers and Operations Teams together)
+  * Fully automated **CI/CD pipeline** based on GitHub Actions CI/CD Server
     * code syntax verification (pylint) (`make lint`)
     * security verification (bandit) (`make security`)
     * unit tests (unittest) (`make unittest`)
@@ -22,7 +22,7 @@ This simple project is demonstration of multiple modern technologies/methodologi
     * load/performance tests (gatling, locust) (NOT IMPLEMENTED YET) (`make load-tests`)
     * destroy infrastructure (AWS, Serverless framework)  (`make destroy`)
   * **deploying from Command Line or from CI/CD** 
-    * single Makefile to control all deploying and code checkings commands
+    * single Makefile to control all deployment and code checkings commands
     * available to **deploy to multiple stages /environments (ex. DEV, SIT, PROD)** using the same command (ex. `make deploy ENV=SIT`)
     * available to deploy single lambda function (ex. `make deploy FUNC=lambdaFunctionName`)
   * **Monitoring**
