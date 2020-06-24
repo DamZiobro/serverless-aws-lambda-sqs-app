@@ -15,6 +15,7 @@ AWS_DEFAULT_REGION ?= eu-west-1
 serverless:
 	#install serverless framework for Continous Deployment
 	npm install -g serverless@1.51.0 || true
+	sls plugin install -n serverless-plugin-cloudwatch-dashboard
 	sls plugin install -n serverless-python-requirements
 	touch $@
 
@@ -72,7 +73,7 @@ load-tests:
 
 destroy:
 	@echo "======> DELETING in env $(ENV) <======"
-	sls remove --stage $(ENV) --region $(AWS_DEFAULT_REGION)
+	sls remove --stage $(ENV) --verbose --region $(AWS_DEFAULT_REGION)
 
 ci: code-checks unittest coverage
 cd: ci deploy e2e-tests load-tests
