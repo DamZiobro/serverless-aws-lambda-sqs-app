@@ -2,7 +2,7 @@ Serverless, DevOps, Microservices and AWS-based app with CI/CD pipeline
 ==================
 
 **CI/CD status**:
-![](https://github.com/DamZiobro/serverless-aws-lambda-sqs-app/workflows/CI/badge.svg)
+![CI/CD](https://github.com/DamZiobro/serverless-aws-lambda-sqs-app/workflows/CI/CD/badge.svg)
 
 This simple project is demonstration of multiple modern technologies/methodologies/principles:
 
