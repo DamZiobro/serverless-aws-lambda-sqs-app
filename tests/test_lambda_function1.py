@@ -3,12 +3,12 @@
 # vim:fenc=utf-8
 
 import unittest
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
 
 from app import lambda_function1
 
-class TestHelloModule(unittest.TestCase):
 
+class TestHelloModule(unittest.TestCase):
     @patch("boto3.client")
     def test_lambda_function1_returns_success(self, sqs_mock):
         result = lambda_function1.lambda_handler("test", None)

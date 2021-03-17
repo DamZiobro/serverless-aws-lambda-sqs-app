@@ -10,6 +10,6 @@ def lambda_handler(event, context):
     :param context: AWS function's context
     :return: ''
     """
-    message = event.get('Records')[0].get('body')
+    message = event.get("Records")[0].get("body")
     print(f"Received message: {message}")
     return message

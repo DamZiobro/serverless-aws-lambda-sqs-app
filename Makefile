@@ -34,15 +34,25 @@ coverage: requirements
 	python -m coverage report -m
 	python -m coverage html
 
+format: requirements
+	python -m isort $(APP_DIR) $(TEST_DIR)
+	python -m black $(APP_DIR) $(TEST_DIR)
+
 lint: requirements
 	python -m pylint --version
 	python -m pylint ${APP_DIR}
+
+isort: requirements
+	python -m isort --check-only $(APP_DIR)/**.py $(TEST_DIR)/**.py
+
+black: requirements
+	python -m black --check $(APP_DIR) $(TEST_DIR)
 
 security: requirements
 	python -m bandit --version
 	python -m bandit ${APP_DIR}
 
-code-checks: lint security
+code-checks: isort black lint security
 
 deploy:
 	@echo "======> Deploying to env $(ENV) <======"

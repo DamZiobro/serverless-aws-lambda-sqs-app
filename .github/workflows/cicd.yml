@@ -40,6 +40,12 @@ jobs:
     - name: Installing requirements
       run: make requirements
 
+    - name: Static code analysis (sorting imports using isort)
+      run: make isort
+
+    - name: Static code analysis (check code formatting using black)
+      run: make black
+
     - name: Static code analysis (pylint tool)
       run: make lint
 
