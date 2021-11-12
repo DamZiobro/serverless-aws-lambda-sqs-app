@@ -14,7 +14,7 @@ AWS_DEFAULT_REGION ?= eu-west-1
 # Test and verify quality of the app
 serverless:
 	#install serverless framework for Continous Deployment
-	npm install -g serverless@1.51.0 || true
+	npm install -g serverless@2.66.1 || true
 	sls plugin install -n serverless-plugin-cloudwatch-dashboard
 	sls plugin install -n serverless-python-requirements
 	touch $@
