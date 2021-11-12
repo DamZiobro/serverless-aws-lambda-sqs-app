@@ -32,7 +32,7 @@ jobs:
     - name: Install NodeJS for serverless framework
       uses: actions/setup-node@v1
       with:
-        node-version: '10.x'
+        node-version: '14.x'
 
     - name: Installing Serverless framework and plugins
       run: make serverless
