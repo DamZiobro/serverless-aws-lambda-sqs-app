@@ -13,7 +13,7 @@ This simple project is demonstration of multiple modern technologies/methodologi
   * **Infrastracture as a Code** (IaaC) (Serverless framework - YML config)
   * **DevOps**-based workflow (Makefile spanning Developers and Operations Teams)
   * **CI/CD** pipeline
-    * code syntax verification (pylint) (`make lint`)
+    * code syntax verification (pylint, isort, black) (`make lint`)
     * security verification (bandit) (`make security`)
     * unit tests (unittest) (`make unittest`)
     * code coverage (coverage python module)  (`make coverage`)
@@ -133,6 +133,7 @@ Continous Deployment
 You can run all the below steps/commands using one `make cd` command:
 - `make deploy` => deploys app to AWS
 - `make e2e-tests` => run End to End tests on deployed app
+- `make load-tests` => run Load tests on deployed app
 - `make destroy` => (optional: works only on feature branches) destroy AWS
   resources after finishing e2e-tests
 
@@ -159,6 +160,14 @@ click on some of the pipelines in [Actions tab](https://github.com/DamZiobro/ser
 
 It should look like on this picture:
 ![](docs/pipeline-details.png)
+
+
+Code syntax formatting
+----
+We can automatically reformat the code according to black and isort rules:
+```
+make format
+```
 
 Creating and Merging Pull Requests
 --------
