@@ -4,6 +4,7 @@ node_modules/*
 package-lock.json
 serverless
 test_requirements
+package.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

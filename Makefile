@@ -15,6 +15,7 @@ AWS_DEFAULT_REGION ?= eu-west-1
 serverless:
 	#install serverless framework for Continous Deployment
 	npm install -g serverless@1.51.0 || true
+	sls plugin install -n serverless-plugin-cloudwatch-dashboard
 	sls plugin install -n serverless-python-requirements
 	touch $@
 
@@ -33,6 +34,10 @@ coverage: requirements
 	python -m coverage report -m
 	python -m coverage html
 
+format: requirements
+	python -m isort $(APP_DIR) $(TEST_DIR)
+	python -m black $(APP_DIR) $(TEST_DIR)
+
 lint: requirements
 	python -m pylint --version
 	python -m pylint ${APP_DIR} ${TEST_DIR}
@@ -43,11 +48,17 @@ format: requirements
 	isort ${APP_DIR} ${TEST_DIR}
 	black ${APP_DIR} ${TEST_DIR}
 
-security:
+isort: requirements
+	python -m isort --check-only $(APP_DIR)/**.py $(TEST_DIR)/**.py
+
+black: requirements
+	python -m black --check $(APP_DIR) $(TEST_DIR)
+
+security: requirements
 	python -m bandit --version
 	python -m bandit ${APP_DIR}
 
-code-checks: lint security
+code-checks: isort black lint security
 
 deploy:
 	@echo "======> Deploying to env $(ENV) <======"
@@ -57,28 +68,28 @@ else
 	sls deploy --stage $(ENV) -f $(FUNC) --verbose --region $(AWS_DEFAULT_REGION)
 endif
 
-run:
+run: requirements
 	@echo "======> Running app on env $(ENV) <======"
 	sls invoke --stage $(ENV) -f lambda_function1
 
 sleep:
-	sleep 20
+	sleep 5
 
-logs:
+logs: requirements
 	@echo "======> Getting logs from env $(ENV) <======"
 	sls logs --stage $(ENV) -f lambda_function1
 	sls logs --stage $(ENV) -f lambda_function2
 
 run-and-logs: run sleep logs
 
-e2e-tests: run-and-logs
+e2e-tests: requirements run-and-logs
 
-load-tests:
+load-tests: requirements
 	@echo -e "load-tests not implemented yet"
 
-destroy:
+destroy: requirements
 	@echo "======> DELETING in env $(ENV) <======"
-	sls remove --stage $(ENV) --region $(AWS_DEFAULT_REGION)
+	sls remove --stage $(ENV) --verbose --region $(AWS_DEFAULT_REGION)
 
 ci: code-checks unittest coverage
 cd: ci deploy e2e-tests load-tests

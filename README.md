@@ -1,17 +1,17 @@
-Serverless Microservices-based AWS app with CI/CD pipeline
+Serverless, DevOps, Microservices and AWS-based app with CI/CD pipeline
 ==================
 
 **CI/CD status**:
-![](https://github.com/DamZiobro/serverless-aws-lambda-sqs-app/workflows/CI/badge.svg)
+![CI/CD](https://github.com/DamZiobro/serverless-aws-lambda-sqs-app/workflows/CI/CD/badge.svg)
 
 This simple project is demonstration of multiple modern technologies/methodologies/principles:
 
   * **Python** programming language
   * cloud-based app deployed to **Amazon Web Services (AWS)**
-  * **Serverless** (Serverless Framework)
+  * **Serverless** (Serverless Framework) - AWS Lambda, SQS
   * **Microservices** architecture (single resposiblity AWS Lambdas communicating via AWS SQS)
-  * **Infrastracture as a Code** (IaaC) (Serverless framework - YML config)
-  * **DevOps**-based workflow (Makefile spanning Developers and Operations Teams)
+  * **Infrastracture as a Code** (IaaC) (Serverless framework - [serverless.yml](serverless.yml) defines infrastructure resources)
+  * **DevOps**-based workflow (common code base with Makefile commands spanning Developers and Operations Teams together)
   * **CI/CD** pipeline
     * code syntax verification (pylint, isort, black) (`make lint`)
     * security verification (bandit) (`make security`)
@@ -22,9 +22,11 @@ This simple project is demonstration of multiple modern technologies/methodologi
     * load/performance tests (gatling, locust) (NOT IMPLEMENTED YET) (`make load-tests`)
     * destroy infrastructure (AWS, Serverless framework)  (`make destroy`)
   * **deploying from Command Line or from CI/CD** 
-    * single Makefile to control all deploying and code checkings commands
+    * single Makefile to control all deployment and code checkings commands
     * available to **deploy to multiple stages /environments (ex. DEV, SIT, PROD)** using the same command (ex. `make deploy ENV=SIT`)
     * available to deploy single lambda function (ex. `make deploy FUNC=lambdaFunctionName`)
+  * **Monitoring**
+    * basic monitoring based on **CloudWatch Dashboards**
 
 This is the skeleton of framework which allows to build and deploy serverless
 apps using chain of `AWS Lambda => SQS => AWS Lambda => ...` pattern. 
@@ -190,3 +192,12 @@ If something is not green, you should fix it before asking Code Review.
 
 When you Code is reviewed you can click 'Merge pull request' and merge it into
 `develop` branch.
+
+Monitoring
+--------
+This application has integrated basic monitoring based on **CloudWatch Dashboards**. 
+It is based on [serverless-plugin-cloudwatch-dashboard](https://www.serverless.com/plugins/serverless-plugin-cloudwatch-dashboard/) Serverless framework plugin.
+
+Deployment of [serverless.yml](serverless.yml) creates 4 CloudWatch Dashboardss for AWS
+Lambda monitoring as on the picture:
+![](docs/dashboards.png)
