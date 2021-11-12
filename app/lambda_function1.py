@@ -13,10 +13,9 @@ def lambda_handler(event, context):
     :param context: AWS function's context
     :return: ''
     """
-    sqs = boto3.client('sqs')
+    sqs = boto3.client("sqs")
     sqs_result = sqs.send_message(
-        QueueUrl=os.getenv('SQS_URL'),
-        MessageBody='test_message'
+        QueueUrl=os.getenv("SQS_URL"), MessageBody="test_message"
     )
     print(sqs_result)
     return sqs_result
