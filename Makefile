@@ -41,12 +41,6 @@ format: requirements
 lint: requirements
 	python -m pylint --version
 	python -m pylint ${APP_DIR} ${TEST_DIR}
-	isort --check-only ${APP_DIR} ${TEST_DIR}
-	black --check ${APP_DIR} ${TEST_DIR}
-
-format: requirements
-	isort ${APP_DIR} ${TEST_DIR}
-	black ${APP_DIR} ${TEST_DIR}
 
 isort: requirements
 	python -m isort --check-only $(APP_DIR)/**.py $(TEST_DIR)/**.py
