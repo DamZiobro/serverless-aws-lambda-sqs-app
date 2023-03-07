@@ -29,7 +29,7 @@ This simple project is demonstration of multiple modern technologies/methodologi
     * basic monitoring based on **CloudWatch Dashboards**
 
 This is the skeleton of framework which allows to build and deploy serverless
-apps using chain of `AWS Lambda => SQS => AWS Lambda => ...` pattern. 
+apps using chain of `AWS Lambda => SQS => AWS Lambda => ...` pattern.  
 
 ![](https://epsagon.com/wp-content/uploads/2018/11/ezgif-2-e456cb3ebd60.jpg)
 
